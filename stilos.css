@@ -1,0 +1,46 @@
+section{
+    background-color: none;
+    margin-top: 10px;
+}
+
+#containerForm{
+    background-color: #343a40;
+    border-radius: 10px;
+}
+
+div.titulo{
+    padding-top: 20px;
+    
+}
+
+
+#btnCreate{
+    border: 1px solid;
+    border-color: #00b74a;
+    border-radius: 5px;
+    color: #00b74a;
+    width: 25%;
+    margin: 5px;
+
+}
+
+#btnCreate:hover{
+    background-color: #00b74a;
+    color: black;
+}
+
+#btnUpdate{
+    border: 1px solid;
+    border-color: #39c0ed;
+    border-radius: 5px;
+    color: #39c0ed;
+    width: 25%;
+    margin: 5px;
+}
+
+#btnUpdate:hover{
+    background-color: #39c0ed;
+    color: black;
+    
+}
+
