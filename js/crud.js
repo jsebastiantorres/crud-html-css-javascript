@@ -6,15 +6,18 @@
 *Delete
 */
 
-class CRUD {
-    registros = [1, 2, 3];
+class ListaDeProductos {
 
-    create() => { }
-    read() => {
-        return this.registros;
-    }
-    update() =>{ }
-    delete() =>{ }
+    create = (productDetails) => {
+    localStorage.setIten('listadeproductos', productDetails)
+}
+read = () => { }
+update = () => { }
+delete = () => { }
 }
 
-let obj = new CRUD();
+const productDetails = {
+    name: document.product.productName.value,
+    quantity:
+    price:
+}
