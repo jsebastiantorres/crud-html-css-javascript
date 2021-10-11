@@ -32,8 +32,8 @@ class ListaDeProductos
                 <td>${obj.fecha}</td>
                 <td class="colActions">
                 
-                <button type="button" id="btnEdit${i}" name="btn-edit" class="btn btn-primary btn-sm"><i class="fa fa-edit text-ligth" aria-hidden="true"></i></button>
-                <button type="button" id="btnDelete${i}" name="btn-delete" class="btn btn-danger btn-sm"><i class="fa fa-trash text-ligth" aria-hidden="true"></i></button>
+                <button type="button" id="btnEdit${i}" name="btn-edit" class="btn btn-primary btn-sm"><i class="fas fa-pen fa-lg" aria-hidden="true"></i></button>
+                <button type="button" id="btnDelete${i}" name="btn-delete" class="btn btn-danger btn-sm"><i class="fas fa-times fa-lg" aria-hidden="true"></i></button>
                 </td>
             </tr>`)
 
