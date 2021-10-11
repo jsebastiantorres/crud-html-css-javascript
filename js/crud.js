@@ -53,7 +53,7 @@ let obj = new ListaDeProductos();
 document.getElementById('btnCreate').addEventListener('click', (event) => {
     event.preventDefault();
     obj.create();
-    obj.add();
+    obj.refreshData();
 })
 
 /* document.getElementById('btnUpdate').addEventListener('click', (event) => {
