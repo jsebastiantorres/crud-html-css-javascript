@@ -113,7 +113,7 @@ class ListaDeProductos {
 
 
     update = (i) => { 
-        let data = JSON.parse(localStorage.getItem('listaProductos'));
+        let data = this.read();
    
         let fruta = 'piña'
         for (let i = 0; i < data.length; i++) {
@@ -132,6 +132,8 @@ class ListaDeProductos {
 }
 
 let obj = new ListaDeProductos();
+
+obj.refreshData();
 
 const process = (element) => {
     const listButtons = ['btn-delete', 'btn-edit']
