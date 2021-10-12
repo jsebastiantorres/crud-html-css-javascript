@@ -133,8 +133,6 @@ class ListaDeProductos {
 
 let obj = new ListaDeProductos();
 
-obj.refreshData();
-
 const process = (element) => {
     const listButtons = ['btn-delete', 'btn-edit']
 
