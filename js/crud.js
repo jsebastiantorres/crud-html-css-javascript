@@ -2,26 +2,30 @@ import Producto from "./producto.js";
 
 
 class ListaDeProductos {
+
+    DBNAME = 'listaProductos'
+    formName = 'product'
+
     create = () => {
         let objProductos = this.getProductDetail()
         let datoAnterior = this.read() || []
         let datos_finales = [...datoAnterior, objProductos]
-        localStorage.setItem('listaProductos', JSON.stringify(datos_finales))
+        localStorage.setItem(this.DBNAME, JSON.stringify(datos_finales))
         this.refreshData()
     }
 
-    read = () => JSON.parse(localStorage.getItem('listaProductos'))
+    read = () => JSON.parse(localStorage.getItem(this.DBNAME))
 
     getProductDetail = () => {
-        let nameProducto = document['product']['productName'].value;
-        let cantidad = document['product']['productQuantity'].value;
-        let price = document['product']['productPrice'].value;
-        let fecha = document['product']['productDate'].value;
+        let nameProducto = document[this.formName]['productName'].value;
+        let cantidad = document[this.formName]['productQuantity'].value;
+        let price = document[this.formName]['productPrice'].value;
+        let fecha = document[this.formName]['productDate'].value;
         return new Producto(nameProducto, cantidad, price, fecha)
     }
 
     refreshData = () => {
-        let listaProductos = this.read();
+        let listaProductos = this.read() || [];
         listaProductos = listaProductos.map((obj, i) => `
             <tr>
                 <td>${i + 1}</td>
@@ -37,7 +41,7 @@ class ListaDeProductos {
                     id="btnEdit${i}"
                     name="btn-edit"
                     class="btn btn-primary btn-sm"
-                    data-mdb-toggle="modal"
+                    data-ma/db-toggle="modal"
                     data-mdb-target="#exampleModal"
                     >
                     <i class="fas fa-pen fa-lg" aria-hidden="true"></i>
@@ -118,20 +122,22 @@ class ListaDeProductos {
         let fruta = 'piña'
         for (let i = 0; i < data.length; i++) {
             data[i].nameProduct = fruta
-           }
-           console.log(data)
+        }
+        console.log(data)
     }
 
     delete = (productIndex) => {
         productIndex = Number(productIndex.replace('btnDelete', ''))
         let listaProductos = this.read();
         listaProductos.splice(productIndex, 1)
-        localStorage.setItem('listaProductos', JSON.stringify(listaProductos))
+        localStorage.setItem(this.DBNAME, JSON.stringify(listaProductos))
         this.refreshData()
     }
 }
 
 let obj = new ListaDeProductos();
+
+
 
 const process = (element) => {
     const listButtons = ['btn-delete', 'btn-edit']
@@ -152,4 +158,5 @@ document.getElementById('btnCreate').addEventListener('click', (event) => {
 
 
 document.formTable.addEventListener('click', process)
+/* obj.refreshData(); */
 
