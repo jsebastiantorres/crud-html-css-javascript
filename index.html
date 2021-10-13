@@ -97,10 +97,76 @@
         </div>
     </section>
 
-    <script type="module" src="./js/crud.js"></script>
-    <!-- <script  type="module" src="./js/producto.js"></script> -->
-    <!-- MDB -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+
+
+     <!-- Modal -->
+     <div
+     class="modal fade "
+     id="myModal"
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true"
+     >
+     <div class="modal-dialog">
+         <div class="modal-content">
+         <div class="modal-header">
+             <h5 class="modal-title" id="exampleModalLabel">Actualizar datos</h5>
+             <button
+             type="button"
+             class="btn-close"
+             data-mdb-dismiss="modal"
+             aria-label="Close"
+             ></button>
+         </div>
+         <form action="" name="productModal">
+            <div class="modal-body bg-ligth">
+     
+                <!-- Producto -->
+                <div class="col">
+                    <div class="form-outline mb-3 text-dark">
+                        <input type="text" id="productName"  class="form-control " name="productName" />
+                        <label class="form-label " for="nameProduct">Producto</label>
+                    </div>
+                </div>
+                <!-- cantidad -->
+                <div class="col">
+                    <div class="form-outline mb-3 text-dark">
+                        <input type="number" id="productQuantity " class="form-control " name="productQuantity" />
+                        <label class="form-label " for="productQuantity">Cantidad</label>
+                    </div>
+                </div>
+                <!-- Precio -->
+                <div class="col">
+                    <div class="form-outline mb-3 text-dark">
+                        <input type="number" id="productPrice " class="form-control " name="productPrice" />
+                        <label class="form-label " for="produsctPrice">Precio</label>
+                    </div>
+                </div>
+                <!-- Fecha -->
+                <div class="col">
+                    <div class="form-outline mb-3 text-dark"">
+                        <input type="date" id="productDate" class="form-control text-end" name="productDate" />
+                        <label class="form-label " for="productDate">Fecha</label>
+                    </div>
+                </div>
+           
+                    </div>
+         </form>
+         
+         <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+             Close
+             </button>
+             <button type="button" class="btn btn-primary">Save changes</button>
+         </div>
+         </div>
+     </div>
+     </div>
+
+     <!-- <script  type="module" src="./js/producto.js"></script> -->
+     <!-- MDB -->
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+     <script src="./js/crud.js"></script>
 </body>
 
 </html>

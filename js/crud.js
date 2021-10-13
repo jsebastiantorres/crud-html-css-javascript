@@ -1,10 +1,27 @@
-import Producto from "./producto.js";
+/* import Producto from "./producto.js"; */
+
+class Producto
+{
+    nameProduct;
+    quantityProduct;
+    priceProduct;
+    fecha;
+
+    constructor(nameProduct, quantityProduct, priceProduct, fecha) {
+        this.nameProduct = nameProduct;
+        this.quantityProduct = quantityProduct;
+        this.priceProduct = priceProduct;
+        this.fecha = fecha;
+    }
+
+}
 
 
 class ListaDeProductos {
 
     DBNAME = 'listaProductos'
     formName = 'product'
+    formNameModal = 'productModal'
 
     create = () => {
         let objProductos = this.getProductDetail()
@@ -24,8 +41,19 @@ class ListaDeProductos {
         return new Producto(nameProducto, cantidad, price, fecha)
     }
 
+    setProductDetail = (obj) => {
+        const myModal = new mdb.Modal(document.getElementById('myModal'))
+        myModal.show()
+        obj = JSON.parse(obj)
+        console.log(obj)
+        document[this.formNameModal]['productName'].value = obj.nameProduct;
+        document[this.formNameModal]['productQuantity'].value = obj.quantityProduct;
+        document[this.formNameModal]['productPrice'].value = obj.priceProduct;
+        document[this.formNameModal]['productDate'].value = obj.fecha;
+    }
+
     refreshData = () => {
-        let listaProductos = this.read() || [];
+        let listaProductos = this.read();
         listaProductos = listaProductos.map((obj, i) => `
             <tr>
                 <td>${i + 1}</td>
@@ -35,95 +63,35 @@ class ListaDeProductos {
                 <td>${obj.fecha}</td>
                 <td class="colActions">
                
-                    <!-- Button trigger modal -->
-                    <button
-                    type="button"
-                    id="btnEdit${i}"
-                    name="btn-edit"
-                    class="btn btn-primary btn-sm"
-                    data-ma/db-toggle="modal"
-                    data-mdb-target="#exampleModal"
-                    >
-                    <i class="fas fa-pen fa-lg" aria-hidden="true"></i>
-                    </button>
+                <!-- Button trigger modal -->
+                <button
+                type="button"
+                id="btnEdit${i}"
+                name="btn-edit"
+                class="btn btn-primary btn-sm"
 
-                    <!-- Modal -->
-                    <div
-                    class="modal fade "
-                    id="exampleModal"
-                    tabindex="-1"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                    >
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Actualizar datos</h5>
-                            <button
-                            type="button"
-                            class="btn-close"
-                            data-mdb-dismiss="modal"
-                            aria-label="Close"
-                            ></button>
-                        </div>
-                        <div class="modal-body bg-ligth">
-                    
-                    
-                    <!-- Producto -->
-                    <div class="col">
-                        <div class="form-outline mb-3 text-dark">
-                            <input type="text" id="productName"  class="form-control " name="productName" />
-                            <label class="form-label " for="nameProduct">Producto</label>
-                        </div>
-                    </div>
-                    <!-- cantidad -->
-                    <div class="col">
-                        <div class="form-outline mb-3 text-dark">
-                            <input type="number" id="productQuantity " class="form-control " name="productQuantity" />
-                            <label class="form-label " for="productQuantity">Cantidad</label>
-                        </div>
-                    </div>
-                    <!-- Precio -->
-                    <div class="col">
-                        <div class="form-outline mb-3 text-dark">
-                            <input type="number" id="productPrice " class="form-control " name="productPrice" />
-                            <label class="form-label " for="produsctPrice">Precio</label>
-                        </div>
-                    </div>
-                    <!-- Fecha -->
-                    <div class="col">
-                        <div class="form-outline mb-3 text-dark"">
-                            <input type="date" id="productDate" class="form-control text-end" name="productDate" />
-                            <label class="form-label " for="productDate">Fecha</label>
-                        </div>
-                    </div>
-    
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-                            Close
-                            </button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
+                onclick="obj.setProductDetail('${JSON.stringify(obj).replace(/"/g, '&quot;')}')"
+                >
+                Editar
+                </button>
                     <button type="button" id="btnDelete${i}" name="btn-delete" class="btn btn-danger btn-sm"><i class="fas fa-times fa-lg"" aria-hidden="true"></i></button>
                 </td>
             </tr>`)
-
         document.getElementById('tableBody').innerHTML = listaProductos.join(' ')
     }
 
 
-    update = (i) => { 
-        let data = this.read();
+    update = () => { 
+
+        /* this.setProductDetail() */
+
+        /* let data = this.read();
    
         let fruta = 'piña'
         for (let i = 0; i < data.length; i++) {
             data[i].nameProduct = fruta
         }
-        console.log(data)
+        console.log(data) */
     }
 
     delete = (productIndex) => {
@@ -135,9 +103,9 @@ class ListaDeProductos {
     }
 }
 
-let obj = new ListaDeProductos();
+const obj = new ListaDeProductos();
 
-
+obj.refreshData();
 
 const process = (element) => {
     const listButtons = ['btn-delete', 'btn-edit']
@@ -158,5 +126,5 @@ document.getElementById('btnCreate').addEventListener('click', (event) => {
 
 
 document.formTable.addEventListener('click', process)
-/* obj.refreshData(); */
+/*  */
 
